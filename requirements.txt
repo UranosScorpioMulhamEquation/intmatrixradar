@@ -1,0 +1,5 @@
+streamlit
+pyswisseph
+geonamescache
+timezonefinder
+pandas

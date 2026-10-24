@@ -57,6 +57,7 @@ TARGET_PLANETS = ['Mars', 'Rahu', 'Ketu', 'Saturn', 'Neptune', 'Uranus', 'Pluto'
 SLOW_PLANETS = ['Jupiter', 'Saturn', 'Uranus', 'Neptune', 'Pluto']
 HAZARD_CONJUNCT_PLANETS = ['Rahu', 'Ketu', 'Mars', 'Pluto', 'Neptune', 'Uranus', 'Saturn']
 
+# الحفاظ على معايير نظرية سنوات الخطر الأصلية (أوربت الأوتاد 6 درجات)
 ORB = 3.0             
 ANGULAR_ORB = 6.0     
 URANUS_CYCLE_DIVISOR = 4.2857  
@@ -216,19 +217,19 @@ ENERGY_MEANINGS = {
     3: "طاقة الوفرة والنمو: ازدهار القطاعات الإنتاجية والتجارية للنظام.",
     4: "طاقة السلطة المركزية والنظام الصارم: بسط النفوذ وتثبيت أركان الدولة.",
     5: "طاقة التشريع والدستور: تفعيل القوانين وتطوير المنظومة التعليمية والقضائية.",
-    6: "طاقة الشراكات الدولية: عقد معاهدات سلام واتفاقيات ثنائية إستراتيجية.",
-    7: "طاقة التوسع والنفوذ الميداني: تحركات عسكرية واستراتيجية حاسمة.",
+    6: "طاقة الشراكات والاختيارات: معاهدات، تجاذبات سياسية، واختبارات انسجام مجتمعي.",
+    7: "طاقة التوسع والنفوذ الميداني: تحركات عسكرية وحشود استراتيجية حاسمة.",
     8: "طاقة الميزانية والتوازن القومي: ضبط النفقات والتسويات القانونية والمالية.",
     9: "طاقة التركيز الداخلي: الانكفاء الإيجابي لتطوير البحوث والقدرات الذاتية.",
     10: "طاقة التحولات المفاجئة: تقلبات جيوسياسية وانعطافات حاسمة في المسار.",
-    11: "طاقة الحشد والقوة الميدانية: اختبار حقيقي للجاهزية العسكرية والأمنية.",
-    12: "طاقة الضغوط والابتلاءات: تباطؤ في الإنتاج وتضحيات تفرضها الظروف.",
-    13: "طاقة التحول الجذري: هدم هياكل سابقة وإعادة صياغة كاملة للنظام.",
+    11: "طاقة الحشد والقوة الميدانية: مواجهات واختبار حقيقي للجاهزية والقبضة الأمنية.",
+    12: "طاقة الضغوط والابتلاءات: تباطؤ في الإنتاج، ركود، وتضحيات تفرضها الظروف.",
+    13: "طاقة التحول الجذري والثورات: هدم هياكل سابقة وإعادة صياغة كاملة للنظام.",
     14: "طاقة التوازن والاستقرار: مرحلة تعافٍ وتناغم بين المؤسسات والمجتمع.",
-    15: "طاقة الضغوط والمواجهات الخفية: اختبارات قاسية للنظام أمام الفساد والصراعات.",
-    16: "طاقة الصدمات والهزات العنيفة: أزمات طارئة تختبر تماسك السلطة والأمن.",
+    15: "طاقة الضغوط والمواجهات الخفية: تمردات، مواجهات، واختبارات قاسية للنظام.",
+    16: "طاقة الصدمات والهزات العنيفة: أزمات طارئة، ثورات، واهتزازات تختبر تماسك السلطة.",
     17: "طاقة التألق والإشعاع: مشاريع مستقبلية كبرى وثقة دولية متصاعدة.",
-    18: "طاقة الحروب النفسية والدعاية: التوترات الدبلوماسية واختبارات الرأي العام.",
+    18: "طاقة الحروب النفسية والدعاية: توترات، تحريك للشارع، واختبارات للرأي العام.",
     19: "طاقة الازدهار العظيم: استقرار شامل، رفاهية، وإنجازات تنموية مشهودة.",
     20: "طاقة الإصلاح الشامل والبعث: صحوة هيكلية وتجديد الدماء في القيادة.",
     21: "طاقة العالم والاندماج الدولي: انفتاح خارجي واسع وترسيخ مكانة الدولة.",
@@ -297,8 +298,8 @@ def is_planet_ruler_or_near_asc(planet_name: str, transit_dt: datetime, natal_as
 
 def libephemeris():
     st.set_page_config(page_title="المحلل الخبير للتنجيم الدولي ومصفوفة الأمم", layout="wide")
-    st.title("🌐 نظام مصفوفة الأمم وخوارزميات التنجيم الدولي (نسخة 120 عاماً والسنوات الخطرة)")
-    st.caption("دمج مصفوفة القدر السياسية مع خرائط العبور الفلكية وتحديد نسب الخطر السنوي - (للفلكي و المبرمج الدكتور : ملهم احمد)")
+    st.title("🌐 نظام مصفوفة الأمم وخوارزميات خرائط عبور التنجيم الدولي (المدمج بنظرية السنوات الخطرة)")
+    st.caption("دمج مصفوفة القدر السياسية مع خرائط العبور الفلكية وتحديد نسب الخطر السنوي - (تطوير الفلكي الدكتور : ملهم احمد)")
     st.markdown("---")
 
     countries_data = load_countries()
@@ -310,7 +311,7 @@ def libephemeris():
     with col1:
         selected_country_label = st.selectbox("اختر الدولة الجغرافية", sorted_country_names)
         selected_country_code = country_options[selected_country_label]
-        # استخراج اسم الدولة تلقائياً من الاختيار الجغرافي دون الحاجة لحقل إضافي
+        # استخراج اسم الدولة تلقائياً من الاختيار الجغرافي دون إدخال نصي إضافي
         country_name = selected_country_label.split(' (')[0]
 
     with col2:
@@ -332,7 +333,7 @@ def libephemeris():
             st.error("يرجى اختيار مدينة صحيحة.")
             st.stop()
 
-        with st.spinner("جاري حساب مواقع الكواكب، إسقاط الأوتاد، مطابقة الدورات الفلكية وتحليل الـ 120 عاماً..."):
+        with st.spinner("جاري حساب مواقع الكواكب وتطبيق نظرية سنوات الخطر الأصلية ضمن دورات أورانوس والأوتاد..."):
             
             tz_str = get_timezone_for_city(selected_city)
             if tz_str:
@@ -349,6 +350,7 @@ def libephemeris():
             f_year = foundation_date.year
             current_year = datetime.now().year
 
+            # البرج الشمسي كطالع اعتباري للنظام
             asc_degree = get_planet_longitude("Sun", utc_dt)
             houses = calculate_whole_sign_houses(asc_degree)
             asc_sign_index = int(asc_degree // 30)
@@ -364,6 +366,7 @@ def libephemeris():
             angular_houses = [1, 6, 8, 12]
             target_house_cusps = {h: houses[h] for h in angular_houses}
 
+            # ==================== تطبيق نظرية سنوات الخطر الأصلية بدقة ====================
             year_hazard_cache = {}
 
             for planet, natal_pos in natal_positions.items():
@@ -392,7 +395,7 @@ def libephemeris():
                                 if is_within_orb(t_pos, cusp_deg, ANGULAR_ORB):
                                     hit_angle = True
                                     t_ar = PLANET_NAMES_AR.get(t_planet, t_planet)
-                                    matched_mechanisms.append(f"عبور {t_ar} على وتد/بيت ({h_num})")
+                                    matched_mechanisms.append(f"عبور {t_ar} على وتد/بيت ({h_num}) ضمن نطاق (0-6°)")
                                     break
                                 if is_within_orb(t_pos, (cusp_deg + ANGULAR_ORB) % 360.0, ORB):
                                     hit_angle = True
@@ -451,13 +454,16 @@ def libephemeris():
                                 "is_hazard": True
                             }
 
+            # ==================== توليد جدول الـ 120 عاماً ومصفوفة الأمم ====================
             timeline_data = []
             for i in range(120):
                 yr = f_year + i
                 years_passed = i
                 yr_energy = reduce_to_22(matrix["center"] + reduce_to_22(yr) + (years_passed % 22))
 
-                # تحديد الحروب
+                is_astrological_hazard = yr in year_hazard_cache
+
+                # 1. تحديد الحروب
                 if yr_energy in [13, 16]:
                     war_type = "حرب داخلية (حرب أهلية / تمرد مسلح)"
                     is_war = True
@@ -468,42 +474,46 @@ def libephemeris():
                     war_type = "حرب مختلطة (تمويل خارجي لجماعات بالوكالة)"
                     is_war = True
                 else:
-                    war_type = "سلم واستقرار أمني عام"
-                    is_war = False
+                    if is_astrological_hazard and "شديد جداً" in year_hazard_cache[yr]["risk_power"]:
+                        war_type = "نزاع مسلح / مواجهات ميدانية خطرة"
+                        is_war = True
+                    else:
+                        war_type = "سلم واستقرار أمني عام"
+                        is_war = False
 
-                # تحديد الوضع الأمني
-                if is_war or yr_energy in [4, 8, 11, 12, 16]:
+                # 2. تحديد الوضع الأمني
+                if is_war or yr_energy in [4, 8, 11, 12, 16] or is_astrological_hazard:
                     sec_status = "استنفار أمني وتشدد بالقبضة الأمنية"
                     sec_pos = False
                 else:
                     sec_status = "اعتيادي ومستقر"
                     sec_pos = True
 
-                # تحديد الوضع الاقتصادي (قاعدة: لا رفاهية في الحرب)
+                # 3. تحديد الوضع الاقتصادي (قاعدة: لا رفاهية في الحرب)
                 if is_war:
                     econ_type = "صعوبات ومعاناة اقتصادية حادة (تداعيات الحرب)"
                     econ_pos = False
                 else:
-                    if yr_energy in [3, 10, 19, 21]:
+                    if yr_energy in [3, 10, 19, 21] and not is_astrological_hazard:
                         econ_type = "رفاهية وازدهار اقتصادي كبير"
                         econ_pos = True
-                    elif yr_energy in [12, 13, 15, 16]:
+                    elif yr_energy in [12, 13, 15, 16] or is_astrological_hazard:
                         econ_type = "معاناة وركود اقتصادي"
                         econ_pos = False
                     else:
                         econ_type = "استقرار اقتصادي ونمو متوازن"
                         econ_pos = True
 
-                # تحديد الوضع السياسي
-                if yr_energy in [4, 8, 11, 17, 21]:
+                # 4. تحديد الوضع السياسي
+                if yr_energy in [4, 8, 11, 17, 21] and not is_astrological_hazard:
                     pol_type = "استقرار سياسي وتثبيت دعائم الحكم"
                     pol_pos = True
                 else:
                     pol_type = "اضطراب سياسي وإعادة هيكلة للنظام"
                     pol_pos = False
 
-                # تحديد الوضع الشعبي
-                if yr_energy in [11, 15, 16, 18, 22]:
+                # 5. تحديد الوضع الشعبي
+                if yr_energy in [11, 15, 16, 18, 22] or is_astrological_hazard:
                     pop_type = "اضطراب وتمرد ومظاهرات شعبية"
                     pop_pos = False
                 else:
@@ -512,7 +522,7 @@ def libephemeris():
 
                 meaning = get_energy_meaning(yr_energy)
 
-                if yr in year_hazard_cache:
+                if is_astrological_hazard:
                     h_info = year_hazard_cache[yr]
                     r_power = h_info["risk_power"]
                     t_planets = h_info["trigger_planets"]
@@ -526,7 +536,7 @@ def libephemeris():
                     qtr = "-"
                     h_months = "-"
 
-                # حساب نسبة الخطر في السنة بناءً على المعطيات الفلكية وجيوسياسية
+                # حساب نسبة الخطر السنوي
                 r_score = 10
                 if is_war:
                     r_score += 40
@@ -569,11 +579,10 @@ def libephemeris():
                     )
                 )
 
-            # تعديل نصيحة المصفوفة لتعتمد حصرياً وبشكل دقيق على مخرجات: الوضع الاقتصادي + الوضع الشعبي + السلم والحرب فقط
+            # نصيحة المصفوفة (مبنية حصراً ودقة على: الوضع الاقتصادي + الوضع الشعبي + السلم والحرب)
             historical_years = [y for y in timeline_data if f_year <= y.year <= current_year]
             if historical_years:
                 total_hist = len(historical_years)
-                # التركيز حصرياً على: econ_pos (الوضع الاقتصادي) + pop_pos (الوضع الشعبي) + not is_war (السلم والحرب)
                 pos_hist = sum(
                     1 for y in historical_years 
                     if y.econ_pos and y.pop_pos and (not y.is_war)
@@ -582,18 +591,18 @@ def libephemeris():
 
                 if ratio >= 0.55:
                     rec_title = "🟢 تنصح بالاستقرار والاستثمار (بيئة اقتصادية وشعبية مستقرة وخالية من الحروب)"
-                    rec_desc = f"بناءً على تتبع مؤشرات الوضع الاقتصادي، الوضع الشعبي، وحالة السلم والحرب منذ تأسيس النظام حتى العام الحالي ({current_year})، بلغت نسبة السنوات الإيجابية والمستقرة نحو {ratio*100:.1f}%. يشكل هذا السجل بيئة ملائمة للاستثمار."
+                    rec_desc = f"بناءً على تحليل مؤشرات (الوضع الاقتصادي، المزاج الشعبي، وحالة السلم والحرب) من تأسيس النظام لغاية عام ({current_year})، بلغت نسبة السنوات الإيجابية والمستقرة نحو {ratio*100:.1f}%. البيئة ملائمة للاستثمار."
                 elif ratio >= 0.35:
                     rec_title = "🟡 تنصح بالاستقرار بحذر وتوخي الحيطة الاستثمارية"
-                    rec_desc = f"بناءً على تحليل الاقتصاد، المزاج الشعبي، وحالة الحروب حتى عام {current_year}، تقاربت فترات الاستقرار مع فترات الاضطراب الشعبي والاقتصادي (نسبة الإيجابية التاريخية {ratio*100:.1f}%). يتطلب الاستثمار استراتيجيات مرنة وحذرة."
+                    rec_desc = f"بناءً على تتبع مخرجات الاقتصاد، الشارع الشعبي، والحروب لغاية عام {current_year}، تساوت فترات الاستقرار مع فترات الأزمات (نسبة الإيجابية التاريخية {ratio*100:.1f}%). يتطلب الاستثمار مرونة وحذراً."
                 else:
                     rec_title = "🔴 لا تنصح بالاستقرار أو ضخ استثمارات طويلة الأجل في الوقت الحالي"
-                    rec_desc = f"أظهرت قراءة التاريخ الاقتصادي، الشعبي، وسجل السلم والحروب للنظام حتى عام {current_year} غلبة واضحة للأزمات واقتصادات الحروب والاضطرابات الشعبية (نسبة الإيجابية التاريخية {ratio*100:.1f}%). البيئة الاقتصادية والمعيشية لا توفر الأمان الكافي."
+                    rec_desc = f"أظهرت قراءة التاريخ الاقتصادي، الشعبي، وسجل السلم والحرب للنظام لغاية عام {current_year} غلبة واضحة لاقتصادات الحروب والاضطرابات (نسبة الإيجابية التاريخية {ratio*100:.1f}%). البيئة غير آمنة للاستثمارات."
             else:
                 rec_title = "⚠️ نطاق زمني حديث"
                 rec_desc = "تاريخ تأسيس النظام حديث جداً أو يقع في المستقبل."
 
-            st.success(f"✨ تم إتمام التحليل الجيوسياسي والفلكي الشامل لكيان ({country_name}) بنجاح لمدى 120 عاماً!")
+            st.success(f"✨ تم إتمام التحليل الجيوسياسي والفلكي الدقيق لكيان ({country_name}) بنجاح لمدى 120 عاماً!")
 
             col_m1, col_m2, col_m3 = st.columns(3)
             col_m1.metric("طاقة الحكم والسيادة", matrix["center"])
@@ -606,11 +615,11 @@ def libephemeris():
                     <p><b>الدولة / الكيان الجغرافي:</b> {country_name}</p>
                     <p><b>تاريخ تأسيس آخر نظام سياسي:</b> {foundation_date}</p>
                     <p><b>النطاق الزمني للدراسة:</b> من عام {f_year} إلى عام {f_year + 119} (120 عاماً كاملة).</p>
-                    <p><b>المنهجية:</b> دمج مصفوفة الأمم، حساب نسبة الخطر السنوي، وربط الاقتصاد بالحروب وخرائط العبور.</p>
+                    <p><b>المنهجية:</b> دمج نظرية سنوات الخطر الفلكية الأصلية بدورة أورانوس والأوتاد مع مصفوفة الأمم الاستراتيجية.</p>
                 </div>
                 
                 <div style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 20px; border-right: 5px solid #27ae60; direction: rtl; text-align: right;">
-                    <h3 style="color: #1b4f72; border-bottom: 2px solid #ecf0f1; padding-bottom: 5px;">💡 نصيحة المصفوفة للاستقرار والاستثمار (حسب مخرجات الاقتصاد، الشعب، والسلم/الحرب حتى {current_year})</h3>
+                    <h3 style="color: #1b4f72; border-bottom: 2px solid #ecf0f1; padding-bottom: 5px;">💡 نصيحة المصفوفة للاستقرار والاستثمار (حسب الاقتصاد، الشارع، والسلم/الحرب حتى {current_year})</h3>
                     <p><b>القرار التقييمي:</b> <span style="font-size: 16px; font-weight: bold;">{rec_title}</span></p>
                     <p>{rec_desc}</p>
                 </div>
@@ -624,8 +633,6 @@ def libephemeris():
                 sec_cls = "color: #27ae60; font-weight: bold;" if item.sec_pos else "color: #c0392b; font-weight: bold;"
                 war_cls = "color: #c0392b; font-weight: bold;" if item.is_war else "color: #27ae60; font-weight: bold;"
                 risk_p_cls = "color: #c0392b; font-weight: bold;" if "شديد جداً" in item.risk_power else ("color: #e67e22; font-weight: bold;" if "متوسط" in item.risk_power else "color: #27ae60;")
-                
-                # تلوين نسبة الخطر بناءً على القيمة الرقمية
                 risk_val_color = "#c0392b" if item.risk_val >= 50 else ("#e67e22" if item.risk_val >= 30 else "#27ae60")
 
                 table_rows += f"""
@@ -704,7 +711,7 @@ def libephemeris():
                 <html lang="ar" dir="rtl">
                 <head>
                     <meta charset="UTF-8">
-                    <title>التقرير الاستراتيجي الشامل - مصفوفة الأمم والسنوات الخطرة لكيان {country_name}</title>
+                    <title>التقرير الاستراتيجي الشامل - مصفوفة الأمم ونسب الخطر لكيان {country_name}</title>
                     <style>
                         body {{ font-family: 'Amiri', Tahoma, sans-serif; background-color: #fff; color: #222; padding: 30px; line-height: 1.6; }}
                         .container {{ max-width: 1150px; margin: auto; border: 1px solid #ccc; padding: 30px; border-radius: 10px; }}
@@ -732,7 +739,7 @@ def libephemeris():
                         </div>
 
                         <div class="rec-box">
-                            <h3>💡 نصيحة المصفوفة للاستقرار والاستثمار (حسب مخرجات الاقتصاد، الشعب، والسلم/الحرب حتى {current_year})</h3>
+                            <h3>💡 نصيحة المصفوفة للاستقرار والاستثمار (حسب الاقتصاد، الشارع، والسلم/الحرب حتى {current_year})</h3>
                             <p><b>القرار التقييمي:</b> <span style="font-size: 14px; font-weight: bold;">{rec_title}</span></p>
                             <p>{rec_desc}</p>
                         </div>
@@ -762,14 +769,14 @@ def libephemeris():
                         </div>
 
                         <button class="print-btn" onclick="window.print()">طباعة التقرير الاستراتيجي مباشرة</button>
-                        <div class="footer">جميع الحقوق محفوظة - نظام مصفوفة الأمم والتنجيم الدولي © 2026</div>
+                        <div class="footer">جميع الحقوق محفوظة - نظام مصفوفة الأمم والتنجيم الدولي - استرو رادار © 2026</div>
                     </div>
                 </body>
                 </html>
             """
 
             st.download_button(
-                label="📥 تحميل التقرير الاستراتيجي النهائي مع نسب الخطر وأشهرها (HTML جاهز للطباعة)",
+                label="📥 تحميل التقرير الاستراتيجي المطور مع نسب الخطر وأشهرها (HTML جاهز للطباعة)",
                 data=html_report,
                 file_name=f"Mundane_Hazard_Report_{country_name}.html",
                 mime="text/html",

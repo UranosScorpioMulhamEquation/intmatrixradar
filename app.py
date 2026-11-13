@@ -23,7 +23,7 @@ def get_machine_id():
 
 def generate_password(mid):
     digits = ''.join(filter(str.isdigit, mid))
-    num = int(digits[:8]) if digits else int(mid.encode().hex(), 16)
+    num = int(digits[:6]) if digits else int(mid.encode().hex(), 16)
     return str(round(abs(num / 2 * 3.14)))[:6]
 
 if 'authenticated' not in st.session_state:

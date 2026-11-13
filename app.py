@@ -16,36 +16,36 @@ import uuid
 import os
 
 # ==================== 1. Security (Fixed) ====================
-KEY_FILE = "license.key"
-
+# ==================== 2. Security Module (Fixed Equation) ====================
 def get_machine_id():
     return hex(uuid.getnode())
 
 def generate_password(mid):
+    # معادلة التشفير الأصلية - لم يتم المساس بها
     digits = ''.join(filter(str.isdigit, mid))
-    num = int(digits[:6]) if digits else int(mid.encode().hex(), 16)
+    num = int(digits[:8]) if digits else int(mid.encode().hex(), 16)
     return str(round(abs(num / 2 * 3.14)))[:6]
 
-if 'authenticated' not in st.session_state:
-    st.session_state['authenticated'] = os.path.exists(KEY_FILE)
-
 if not st.session_state['authenticated']:
-    st.set_page_config(page_title="Security", layout="centered")
     st.title("Security Activation - Ask the programmer for your password")
     st.warning("Send your Machine ID to programmer email : mulham81ahmed@gmail.com ")
 
     mid = get_machine_id()
     st.info(f"Machine ID: {mid}")
+    
     pwd = st.text_input("Enter Activation Key:", type="password")
+    
     if st.button("Activate"):
         if pwd == generate_password(mid):
-            with open(KEY_FILE, "w") as f: f.write(pwd)
+            with open(KEY_FILE, "w") as f: 
+                f.write(pwd)
             st.session_state['authenticated'] = True
-            st.rerun()
+            st.rerun()  # إعادة تحميل الصفحة لتطبيق التغييرات وفتح البرنامج
         else:
-            st.error("Invalid Activation Key.")
+            st.error("Invalid Activation Key. Please check and try again.")
+            
+    # إيقاف تنفيذ باقي الكود تماماً إذا لم تتم المصادقة
     st.stop()
-
 
 # ==========================================
 

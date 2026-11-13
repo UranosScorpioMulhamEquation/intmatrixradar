@@ -15,7 +15,7 @@ from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 import uuid
 import os
 
-# ==================== 1. Security & License ====================
+# ==================== 1. Security (Fixed) ====================
 KEY_FILE = "license.key"
 
 def get_machine_id():
@@ -30,9 +30,9 @@ if 'authenticated' not in st.session_state:
     st.session_state['authenticated'] = os.path.exists(KEY_FILE)
 
 if not st.session_state['authenticated']:
-    st.set_page_config(page_title="Security Activation", layout="centered")
-    st.title("🔑 Security Activation")
-    st.warning("Send your Machine ID to programmer email : mulham81ahmed@gmail.com")
+    st.set_page_config(page_title="Security", layout="centered")
+    st.title("Security Activation - Ask the programmer for your password")
+    st.warning("Send your Machine ID to programmer email : mulham81ahmed@gmail.com ")
 
     mid = get_machine_id()
     st.info(f"Machine ID: {mid}")
@@ -45,6 +45,7 @@ if not st.session_state['authenticated']:
         else:
             st.error("Invalid Activation Key.")
     st.stop()
+
 
 # ==========================================
 
